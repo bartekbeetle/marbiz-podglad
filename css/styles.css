@@ -1,55 +1,189 @@
 /* Marbiz — styles.css
-   Zero zależności zewnętrznych. Fonty systemowe. Wszystko w jednym pliku,
-   celowo (strona ma 6 podstron, nie ma sensu dzielić na moduły). */
+   Zero zależności zewnętrznych, zero JS. Fonty wgrane lokalnie z fonts/.
+   Wszystko w jednym pliku (strona ma 7 podstron, nie ma sensu dzielić na moduły).
 
+   Kierunek: plac budowy, nie agencja. Asfaltowa czerń + kość + żółć
+   ostrzegawcza jednym akcentem. Zero domyślnej palety Tailwinda,
+   zero fontu systemowego, zero kafli z numerkami w kółkach. */
+
+/* ============================================================
+   1. FONTY — Barlow Condensed (display) + Barlow (tekst)
+   Latin + Latin Extended-A w dwóch plikach na wagę (polskie znaki
+   ą ć ę ł ń ś ź ż leżą w Latin Extended-A, ó w Latin-1 Supplement —
+   bez obu plików część liter by nie wyrenderowała się poprawnie).
+   ============================================================ */
+
+/* Barlow — tekst */
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/barlow-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/barlow-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+2020, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/barlow-500-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/barlow-500-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+2020, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/barlow-600-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/barlow-600-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+2020, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/barlow-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/barlow-700-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+2020, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Barlow Condensed — nagłówki, numery, telefon */
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/barlow-condensed-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/barlow-condensed-700-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+2020, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("../fonts/barlow-condensed-800-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("../fonts/barlow-condensed-800-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+2020, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("../fonts/barlow-condensed-900-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("../fonts/barlow-condensed-900-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+2020, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ============================================================
+   2. TOKENY
+   Bloki marki stałe (header, hero, proof-quote, cta-band, stopka,
+   mobile-call-bar) mają WŁASNE, niezmienne kolory --brand-* — to samo
+   w obu motywach, bo to fizyczna tożsamość marki (asfalt + hi-vis),
+   nie "płótno strony". Zmienne --color-* opisują płótno (treść między
+   tymi blokami) i to one się przełączają w trybie ciemnym.
+   ============================================================ */
 :root {
-  --color-bg: #ffffff;
-  --color-bg-alt: #f5f5f0;
-  --color-surface: #ffffff;
-  --color-text: #1f2937;
-  --color-text-muted: #4b5563;
-  --color-border: #e5e7eb;
-  --color-accent: #c2410c;      /* pomarańcz, tło przycisków z białym tekstem: kontrast 5.18:1, AA */
-  --color-accent-dark: #9a3412; /* pomarańcz ciemny, hover przycisków / tekst na białej pigułce: kontrast 7.31:1 */
-  --color-link: #9a3412;        /* kolor linków i haczyków na zmiennym tle strony (jasny/ciemny motyw) */
-  --color-link-hover: #c2410c;
-  --color-dark: #1f2937;        /* grafit, tło stałych sekcji brandowych (header/hero/stopka): kontrast 14.68:1 z bielą */
-  --color-heading: #1f2937;     /* kolor nagłówków na zmiennym tle strony, patrz uwaga w bloku dark mode */
-  --color-badge-bg: #fde68a;
-  --color-badge-text: #1f2937;  /* kontrast 11.79:1 */
+  /* płótno — jasny motyw: kość / surowy papier */
+  --color-bg: #ede8df;
+  --color-bg-alt: #e4dece;
+  --color-ink: #17140f;       /* nagłówki, kontrast 15.05:1 na --color-bg */
+  --color-text: #3a362d;      /* tekst akapitów, kontrast 9.86:1 */
+  --color-text-muted: #635e4e; /* podpisy, etykiety, kontrast 5.31:1 / 4.82:1 na bg-alt */
+  --color-border: #c4bba3;    /* linia porządkująca, dekoracyjna */
 
-  --radius: 10px;
-  --max-width: 1120px;
+  /* marka — stałe bloki, niezmienne w obu motywach */
+  --brand-dark: #17140f;      /* asfalt, tło header/hero/proof/cta-band/stopka */
+  --brand-dark-alt: #221d15;  /* panel wewnątrz bloku marki, lekko jaśniejszy */
+  --brand-border: #423c28;    /* hairline na tle marki */
+  --on-brand: #ede8df;        /* tekst na tle marki, kontrast 15.05:1 */
+  --on-brand-muted: #b5ad98;  /* tekst podrzędny na tle marki, kontrast 8.22:1 */
+
+  /* akcent — żółć ostrzegawcza, jeden na całą stronę.
+     Zasada bez wyjątków: NIGDY jako kolor tekstu na jasnym płótnie.
+     Dozwolone role: tło przycisku (z ciemnym tekstem), podkreślenie
+     linku, tekst WYŁĄCZNIE na stałych ciemnych blokach marki. */
+  --accent: #f2c200;
+  --accent-hover: #dcb000;
+  --accent-active: #c9a000;
+  --accent-ink: #17140f;      /* tekst na --accent, kontrast 10.93:1 */
+
+  --radius: 0px;               /* jeden system zaokrągleń: brak. Krawędzie ostre. */
+  --max-width: 1200px;
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
   --space-4: 2.5rem;
-  --space-5: 4rem;
+  --space-5: 4.5rem;
 
-  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-body: "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Barlow Condensed", "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* ---------- Tryb ciemny ----------
-   Sekcje z tłem stałym brandowym (header, hero, proof-band, cta-band, stopka,
-   trust-bar, mobile-call-bar) używają var(--color-dark) / var(--color-accent) /
-   var(--color-badge-bg) już dziś i mają własny, zawsze poprawny kontrast tekstu
-   niezależnie od motywu — te NIE są tu nadpisywane (to nie jest odwracanie
-   sekcji w środku strony, to stałe bloki marki obecne w obu motywach).
-   Nadpisywane jest płótno strony: tło, tekst, obramowania, karty. Osobno
-   --color-heading: h1/h2/h3 poza hero/cta-band siedzą na tym zmiennym płótnie
-   (nie na stałym --color-dark), więc same muszą się rozjaśnić w trybie ciemnym
-   — inaczej grafit na graficie jest nieczytelny (złapane na zrzucie ekranu). */
+/* płótno — tryb ciemny. Bloki marki (--brand-*) nie są tu nadpisywane
+   celowo: są ciemne w OBU motywach, to jest ich stała tożsamość. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #15181c;        /* niepełna czerń, nie #000000 */
-    --color-bg-alt: #1c2027;
-    --color-surface: #1c2027;
-    --color-text: #e6e8eb;      /* niepełna biel, nie #ffffff */
-    --color-text-muted: #a3abb5;
-    --color-border: #2d323a;
-    --color-link: #fb923c;      /* jaśniejszy pomarańcz: kontrast 7,87:1 na #15181c */
-    --color-link-hover: #fdba74;
-    --color-heading: #f3f4f6;   /* kontrast ~16,7:1 na #15181c */
+    --color-bg: #1c1810;
+    --color-bg-alt: #241f16;
+    --color-ink: #f0ebdd;       /* kontrast 14.85:1 na --color-bg */
+    --color-text: #c9c2ae;      /* kontrast 9.95:1 */
+    --color-text-muted: #9a9481; /* kontrast 5.83:1 / 5.40:1 na bg-alt */
+    --color-border: #423c28;
   }
 }
 
@@ -71,26 +205,48 @@ body {
 
 img { max-width: 100%; display: block; }
 
-a { color: var(--color-link); }
-a:hover { color: var(--color-link-hover); }
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* linki na płótnie: kolor ink + podkreślenie akcentem. Żółć jako LINIA,
+   nigdy jako kolor liter — bezpieczne w obu motywach. */
+a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-color: var(--color-ink); }
 
 h1, h2, h3 {
-  line-height: 1.2;
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   margin: 0 0 var(--space-2);
-  color: var(--color-heading);
+  color: var(--color-ink);
 }
+h1 { font-size: clamp(2.2rem, 5.2vw, 3.6rem); font-weight: 900; }
+h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); }
+h3 { font-size: clamp(1.2rem, 2vw, 1.4rem); font-weight: 800; }
 
-h1 { font-size: clamp(1.9rem, 4.5vw, 2.9rem); }
-h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
-h3 { font-size: 1.2rem; }
-
-p { margin: 0 0 var(--space-2); color: var(--color-text-muted); }
+p { margin: 0 0 var(--space-2); color: var(--color-text); }
+p.lead { font-size: 1.12rem; }
 
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--space-3);
 }
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
+.icon svg { display: block; width: 100%; height: 100%; fill: currentColor; }
 
 /* ---------- Pasek roboczy (do usunięcia przed publikacją) ---------- */
 #draft-banner {
@@ -99,89 +255,104 @@ p { margin: 0 0 var(--space-2); color: var(--color-text-muted); }
   text-align: center;
   font-size: 0.85rem;
   padding: 0.6rem var(--space-2);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.01em;
 }
 #draft-banner strong { text-transform: uppercase; }
 
-/* ---------- Header ---------- */
+/* ============================================================
+   3. HEADER
+   ============================================================ */
 header.site-header {
-  background: var(--color-dark);
-  color: #fff;
+  background: var(--brand-dark);
+  color: var(--on-brand);
   position: sticky;
   top: 0;
   z-index: 20;
-  border-bottom: 3px solid var(--color-accent);
+  border-bottom: 3px solid var(--accent);
 }
-
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-2);
-  padding: 0.9rem var(--space-3);
+  gap: var(--space-3);
+  padding: 0.75rem var(--space-3);
   max-width: var(--max-width);
   margin: 0 auto;
-  flex-wrap: wrap;
+  min-height: 64px;
 }
-
 .brand {
-  display: flex;
-  flex-direction: column;
-  color: #fff;
+  color: var(--on-brand);
   text-decoration: none;
-  line-height: 1.15;
+  flex-shrink: 0;
 }
-.brand:hover { color: #fff; }
+.brand:hover { color: var(--on-brand); text-decoration: none; }
 .brand-name {
-  font-weight: 800;
-  font-size: 1.5rem;
-  letter-spacing: 0.02em;
-}
-.brand-tagline {
-  font-size: 0.78rem;
-  color: #d1d5db;
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.65rem;
+  letter-spacing: 0.01em;
 }
 
 nav.main-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem 1.1rem;
+  gap: 0.25rem 1.05rem;
+  font-family: var(--font-body);
 }
 nav.main-nav a {
-  color: #e5e7eb;
+  color: var(--on-brand-muted);
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.92rem;
+  font-weight: 600;
   padding: 0.4rem 0.1rem;
   border-bottom: 2px solid transparent;
+  white-space: nowrap;
 }
 nav.main-nav a:hover,
 nav.main-nav a[aria-current="page"] {
-  color: #fff;
-  border-bottom-color: var(--color-accent);
+  color: var(--on-brand);
+  border-bottom-color: var(--accent);
 }
 
 .header-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--color-accent);
-  color: #fff;
+  background: var(--accent);
+  color: var(--accent-ink);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 800;
   padding: 0.6rem 1rem;
-  border-radius: var(--radius);
   white-space: nowrap;
   min-height: 44px;
+  flex-shrink: 0;
 }
-.header-cta:hover { background: var(--color-accent-dark); color: #fff; }
+.header-cta:hover { background: var(--accent-hover); color: var(--accent-ink); }
+.header-cta:active { transform: translateY(1px); background: var(--accent-active); }
 
-/* ---------- Hero ---------- */
+/* ---------- Focus visible (klawiatura) ---------- */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+header.site-header a:focus-visible,
+footer.site-footer a:focus-visible,
+.hero a:focus-visible,
+.cta-band a:focus-visible,
+.proof-quote a:focus-visible {
+  outline-color: var(--accent);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   4. HERO — split asymetryczny, nie wycentrowany
+   ============================================================ */
 .hero {
-  background: var(--color-dark);
-  color: #fff;
+  background: var(--brand-dark);
+  color: var(--on-brand);
   position: relative;
   overflow: hidden;
 }
@@ -194,16 +365,15 @@ nav.main-nav a[aria-current="page"] {
   gap: var(--space-4);
   align-items: center;
 }
-.hero h1 { color: #fff; }
+.hero h1 { color: var(--on-brand); }
 .hero p.lead {
-  color: #d1d5db;
-  font-size: 1.1rem;
+  color: var(--on-brand-muted);
   max-width: 46ch;
 }
 .hero-photo {
-  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.4);
+  border: 1px solid var(--brand-border);
 }
 .hero-photo img { width: 100%; height: auto; display: block; }
 /* klatki z filmów FB mają nakładkę interfejsu (ciemne kółko "…") w prawym
@@ -221,99 +391,238 @@ nav.main-nav a[aria-current="page"] {
   margin-top: var(--space-3);
 }
 
+/* ============================================================
+   5. PRZYCISKI
+   ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  font-weight: 700;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-weight: 800;
   text-decoration: none;
-  border-radius: var(--radius);
-  padding: 0.85rem 1.4rem;
+  padding: 0.85rem 1.5rem;
   min-height: 44px;
   font-size: 1.02rem;
   border: 2px solid transparent;
+  transition: transform 0.15s cubic-bezier(0.16,1,0.3,1), background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 .btn-primary {
-  background: var(--color-accent);
-  color: #fff;
+  background: var(--accent);
+  color: var(--accent-ink);
 }
-.btn-primary:hover { background: var(--color-accent-dark); color: #fff; }
-.btn-secondary {
+.btn-primary:hover { background: var(--accent-hover); color: var(--accent-ink); }
+.btn-primary:active { transform: translateY(1px); background: var(--accent-active); }
+
+/* ghost — na płótnie (jasny lub ciemny motyw) */
+.btn-outline {
   background: transparent;
-  color: #fff;
-  border-color: rgba(255,255,255,0.5);
+  color: var(--color-ink);
+  border-color: var(--color-ink);
 }
-.btn-secondary:hover { border-color: #fff; color: #fff; }
+.btn-outline:hover { background: var(--color-ink); color: var(--color-bg); }
+.btn-outline:active { transform: translateY(1px); }
 
-/* ---------- Trust bar ---------- */
-.trust-bar {
-  background: var(--color-badge-bg);
-  color: var(--color-badge-text);
-  text-align: center;
-  padding: 0.75rem var(--space-2);
-  font-weight: 600;
-  font-size: 0.95rem;
+/* ghost — na stałym ciemnym bloku marki (hero, cta-band) */
+.btn-outline-invert {
+  background: transparent;
+  color: var(--on-brand);
+  border-color: var(--on-brand-muted);
 }
-.trust-bar span.muted {
-  font-weight: 400;
-  color: #4b5563;
-}
+.btn-outline-invert:hover { border-color: var(--on-brand); }
+.btn-outline-invert:active { transform: translateY(1px); }
 
-/* ---------- Sections ---------- */
-section {
-  padding: var(--space-5) 0;
-}
+/* ============================================================
+   6. SEKCJE — bazowe
+   ============================================================ */
+section { padding: var(--space-5) 0; }
 section.alt { background: var(--color-bg-alt); }
 
+/* Wyrównanie do lewej, NIE `margin: 0 auto`. Wycentrowany blok 62ch lądował
+   na 415 px, gdy cała reszta strony (wiersze usług, hero, stopka) trzyma lewą
+   krawędź na 137 px — czytało się to jak zepsuta siatka, nie jak kompozycja.
+   Zmierzone przez CDP, nie oceniane na oko. */
 .section-head {
   max-width: 62ch;
-  margin: 0 auto var(--space-4);
-  text-align: center;
+  margin: 0 0 var(--space-4);
 }
 .section-head p { margin: 0; }
 
-/* ---------- Services grid ---------- */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-3);
-}
-.service-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: var(--space-3);
+/* ============================================================
+   7. PASY USŁUG — numerowane wiersze na pełną szerokość
+   (zastępują sześć równych kafli z ikonami w kółkach)
+   ============================================================ */
+.row-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
-.service-card .icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius);
-  background: var(--color-dark);
-  color: var(--color-badge-bg);
-  display: flex;
+.row-item {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr auto;
+  gap: var(--space-3);
+  align-items: start;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+.row-item:first-child { border-top: none; }
+.row-num {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  line-height: 1;
+  color: var(--color-ink);
+  opacity: 0.9;
+}
+.row-body h3 { margin-bottom: 0.35rem; }
+.row-body p { margin-bottom: 0; max-width: 62ch; }
+.row-link {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  font-weight: 800;
-}
-.service-card h3 { margin-bottom: 0.2rem; }
-.service-card p { margin-bottom: 0.4rem; }
-.service-card a.more {
-  font-weight: 600;
-  text-decoration: none;
+  gap: 0.35rem;
+  align-self: center;
+  font-weight: 700;
   font-size: 0.92rem;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+.row-link:hover { text-decoration-color: var(--color-ink); }
+.row-note {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+.row-note a { font-weight: 700; }
+
+/* ============================================================
+   8. PASMO OPINII — cytat + statystyki, stały blok marki
+   ============================================================ */
+.proof-quote {
+  background: var(--brand-dark);
+  color: var(--on-brand);
+}
+.proof-quote-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.proof-quote blockquote {
+  margin: 0;
+  max-width: 46ch;
+}
+.proof-quote blockquote p {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  line-height: 1.25;
+  color: var(--on-brand);
+  margin: 0 0 var(--space-2);
+}
+.proof-quote figcaption {
+  font-size: 0.95rem;
+  color: var(--on-brand-muted);
+}
+.proof-quote figcaption cite {
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--on-brand);
+}
+.proof-quote figcaption .quote-source {
+  font-size: 0.85rem;
 }
 
-/* ---------- Photo frame (kadrowanie klatek z FB, ucina róg z nakładką) ---------- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: var(--space-4);
+  border-top: 1px solid var(--brand-border);
+  padding-top: var(--space-3);
+}
+.stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  display: block;
+  font-size: 0.86rem;
+  color: var(--on-brand-muted);
+  max-width: 20ch;
+  margin-top: 0.3rem;
+}
+
+/* ============================================================
+   9. MOZAIKA ZDJĘĆ — zróżnicowane proporcje, bez pustych komórek
+   ============================================================ */
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 150px);
+  grid-template-areas:
+    "a a b b"
+    "a a c d"
+    "e e f f";
+  gap: var(--space-2);
+}
+.mosaic-item {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--color-border);
+}
+.mosaic-item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mosaic-item.crop-corner img {
+  transform: scale(1.18);
+  transform-origin: bottom left;
+}
+.mosaic-item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #f5f2ea;
+  background: linear-gradient(to top, rgba(15,12,8,0.82), rgba(15,12,8,0));
+}
+.mosaic-a { grid-area: a; }
+.mosaic-b { grid-area: b; }
+.mosaic-c { grid-area: c; }
+.mosaic-d { grid-area: d; }
+.mosaic-e { grid-area: e; }
+.mosaic-f { grid-area: f; }
+
+/* ============================================================
+   10. TREŚĆ + ZDJĘCIE (podstrony usług)
+   ============================================================ */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  align-items: center;
+}
+
 .photo-frame {
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
   aspect-ratio: 3 / 2;
-  background: #111827;
+  background: var(--brand-dark);
   max-width: 580px;
 }
 .photo-frame img {
@@ -325,13 +634,9 @@ section.alt { background: var(--color-bg-alt); }
   transform: scale(1.2);
   transform-origin: bottom left;
 }
-.photo-frame.no-crop img {
-  transform: none;
-}
-.photo-frame.wide {
-  aspect-ratio: 16 / 9;
-  max-width: none;
-}
+.photo-frame.no-crop img { transform: none; }
+.photo-frame.wide { aspect-ratio: 16 / 9; max-width: none; }
+.split .photo-frame { max-width: none; }
 
 .gallery-grid {
   display: grid;
@@ -344,126 +649,118 @@ section.alt { background: var(--color-bg-alt); }
   color: var(--color-text-muted);
 }
 
-/* ---------- Split (image + text) used on service subpages ---------- */
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-  align-items: center;
-}
-.split .photo-frame { max-width: none; }
-
+/* ---------- Lista z ptaszkiem — plakietka hi-vis, nie znak tekstowy ---------- */
 .list-check {
   list-style: none;
   margin: 0 0 var(--space-2);
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.7rem;
 }
 .list-check li {
-  padding-left: 1.7rem;
+  padding-left: 2.1rem;
   position: relative;
   color: var(--color-text);
 }
-.list-check li::before {
-  content: "✓";
+.list-check .tick {
   position: absolute;
   left: 0;
-  top: 0;
-  color: var(--color-link);
-  font-weight: 800;
+  top: 0.05em;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.list-check .tick .icon { width: 0.8rem; height: 0.8rem; }
 
-/* ---------- Trust / proof band ---------- */
-.proof-band {
-  background: var(--color-dark);
-  color: #fff;
-}
-.proof-band .container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-3);
+/* ============================================================
+   11. PASMO CTA — stały blok marki, wycentrowane, telefon jako element wizualny
+   ============================================================ */
+.cta-band {
+  background: var(--brand-dark);
+  color: var(--on-brand);
   text-align: center;
 }
-.proof-item .num {
-  font-size: 2.1rem;
-  font-weight: 800;
-  color: var(--color-badge-bg);
-  display: block;
-}
-.proof-item .label {
-  color: #d1d5db;
-  font-size: 0.92rem;
-}
+.cta-band h2 { color: var(--on-brand); }
+.cta-band p { color: var(--on-brand-muted); }
+.cta-band .btn-primary:active { transform: translateY(1px); }
 
-/* ---------- Contact block ---------- */
+.phone-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  color: var(--accent);
+  text-decoration: none;
+  margin: var(--space-2) 0;
+}
+.phone-display:hover { color: var(--on-brand); }
+.phone-display .icon { width: 0.75em; height: 0.75em; }
+
+/* ============================================================
+   12. KONTAKT — lista z ikonami, bez kart z cieniem
+   ============================================================ */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: var(--space-4);
 }
 .contact-grid > * { min-width: 0; }
-.contact-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: var(--space-3);
-  min-width: 0;
-}
+
+.contact-list { margin-top: var(--space-3); }
 .contact-line {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 0.4rem 0.7rem;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid var(--color-border);
+  gap: 0.8rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--color-border);
   font-size: 1.05rem;
   min-width: 0;
 }
-.contact-line:last-child { border-bottom: none; }
+.contact-line:first-child { border-top: none; }
+.contact-line .icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  color: var(--color-ink);
+  flex-shrink: 0;
+}
 .contact-line .label {
   color: var(--color-text-muted);
-  font-size: 0.85rem;
-  min-width: 90px;
+  font-size: 0.82rem;
+  min-width: 80px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
-.contact-line a {
+.contact-line a,
+.contact-line span.value {
   font-weight: 700;
-  text-decoration: none;
   overflow-wrap: anywhere;
   min-width: 0;
 }
 
 .hours-note {
   background: var(--color-bg-alt);
-  border-radius: var(--radius);
   padding: var(--space-3);
-  font-size: 0.95rem;
   color: var(--color-text-muted);
-  min-width: 0;
 }
+.hours-note h3 { margin-top: 0; }
+.hours-note h3 + p { margin-top: 0; }
 
-/* ---------- Bottom CTA band ---------- */
-.cta-band {
-  background: var(--color-accent);
-  color: #fff;
-  text-align: center;
-}
-.cta-band h2 { color: #fff; }
-.cta-band p { color: rgba(255,255,255,0.9); }
-.cta-band .btn-primary {
-  background: #fff;
-  color: var(--color-accent-dark);
-}
-.cta-band .btn-primary:hover { background: var(--color-dark); color: #fff; }
-.cta-band .btn-secondary { border-color: rgba(255,255,255,0.7); }
-
-/* ---------- Footer ---------- */
+/* ============================================================
+   13. STOPKA
+   ============================================================ */
 footer.site-footer {
-  background: var(--color-dark);
-  color: #d1d5db;
+  background: var(--brand-dark);
+  color: var(--on-brand-muted);
   padding: var(--space-4) 0 6rem;
   font-size: 0.92rem;
+  border-top: 1px solid var(--brand-border);
 }
 footer.site-footer .container {
   display: flex;
@@ -471,32 +768,42 @@ footer.site-footer .container {
   justify-content: space-between;
   gap: var(--space-3);
 }
-footer.site-footer a { color: #fff; }
+footer.site-footer a {
+  color: var(--on-brand-muted);
+  text-decoration: none;
+}
+footer.site-footer a:hover { color: var(--on-brand); }
 footer.site-footer .foot-col { min-width: 220px; }
 footer.site-footer h4 {
-  color: #fff;
-  font-size: 0.9rem;
+  color: var(--on-brand);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin: 0 0 0.6rem;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.8rem;
 }
+footer.site-footer .foot-contact-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.5rem;
+}
+footer.site-footer .foot-contact-line .icon { color: var(--on-brand-muted); }
 footer.site-footer nav a {
   display: block;
-  color: #d1d5db;
-  text-decoration: none;
   padding: 0.2rem 0;
 }
-footer.site-footer nav a:hover { color: #fff; }
 .foot-legal {
-  color: #9ca3af;
+  color: #8a8270;
   font-size: 0.82rem;
   margin-top: var(--space-3);
 }
 
-/* ---------- Mobile sticky call bar ---------- */
-.mobile-call-bar {
-  display: none;
-}
+/* ============================================================
+   14. PASEK „ZADZWOŃ" NA MOBILE — hi-vis, sticky
+   ============================================================ */
+.mobile-call-bar { display: none; }
 
 @media (max-width: 640px) {
   .mobile-call-bar {
@@ -506,41 +813,65 @@ footer.site-footer nav a:hover { color: #fff; }
     right: 0;
     bottom: 0;
     z-index: 30;
-    background: var(--color-accent);
-    color: #fff;
+    background: var(--accent);
+    color: var(--accent-ink);
     text-decoration: none;
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
     font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
     padding: 0.9rem;
     min-height: 52px;
-    box-shadow: 0 -6px 18px rgba(0,0,0,0.25);
+    box-shadow: 0 -6px 18px rgba(0,0,0,0.3);
   }
+  .mobile-call-bar:active { background: var(--accent-active); }
   body { padding-bottom: 52px; }
   .header-cta { display: none; }
 }
 
-/* ---------- Responsive ---------- */
+/* ============================================================
+   15. RESPONSYWNOŚĆ
+   ============================================================ */
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; }
   .split { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
-  nav.main-nav { order: 3; width: 100%; padding-top: 0.3rem; }
-  .header-inner { justify-content: center; }
+  .stat-strip { grid-template-columns: 1fr 1fr; }
+  nav.main-nav { order: 3; width: 100%; padding-top: 0.4rem; }
+  .header-inner { flex-wrap: wrap; }
+  .row-item { grid-template-columns: 4rem 1fr; }
+  .row-link { grid-column: 1 / -1; align-self: start; margin-top: 0.4rem; }
+}
+
+@media (max-width: 700px) {
+  .mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 160px);
+    grid-template-areas:
+      "a a"
+      "b c"
+      "d e"
+      "f f";
+    grid-auto-rows: 160px;
+  }
 }
 
 @media (max-width: 480px) {
   body { font-size: 16px; }
   .container { padding: 0 var(--space-2); }
   section { padding: var(--space-4) 0; }
+  .stat-strip { grid-template-columns: 1fr; gap: var(--space-3); }
+  .row-item { grid-template-columns: 3.2rem 1fr; gap: var(--space-2); }
+  .row-num { font-size: 2.1rem; }
 }
 
-/* ---------- prefers-reduced-motion ----------
-   Strona nie ma dziś żadnych transition/animation — jedyny ruch przeglądarki
-   to płynne przewijanie po kliknięciu kotwicy (html { scroll-behavior: smooth }).
-   Blok poniżej je wygasza i jest zabezpieczeniem na przyszłość: każdy kolejny
-   transition/animation dodany do tego pliku automatycznie się tu wyłączy. */
+/* ============================================================
+   16. PREFERS-REDUCED-MOTION
+   Jedyny ruch na stronie to :hover/:active na przyciskach/linkach
+   i płynne przewijanie po kotwicy — obie rzeczy wygaszamy tutaj.
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
