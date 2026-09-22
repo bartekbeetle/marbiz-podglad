@@ -15,4 +15,4 @@ COPY transport-materialow/   /usr/share/nginx/html/transport-materialow/
 COPY rozbiorki/              /usr/share/nginx/html/rozbiorki/
 COPY kontakt/                /usr/share/nginx/html/kontakt/
 
-EXPOSE 80
+EXPOSE 3000
