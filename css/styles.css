@@ -5,12 +5,16 @@
 :root {
   --color-bg: #ffffff;
   --color-bg-alt: #f5f5f0;
+  --color-surface: #ffffff;
   --color-text: #1f2937;
   --color-text-muted: #4b5563;
   --color-border: #e5e7eb;
-  --color-accent: #c2410c;      /* pomarańcz — kontrast 5.18:1 z bielą, AA */
-  --color-accent-dark: #9a3412; /* kontrast 7.31:1 z bielą */
-  --color-dark: #1f2937;        /* grafit — kontrast 14.68:1 z bielą */
+  --color-accent: #c2410c;      /* pomarańcz, tło przycisków z białym tekstem: kontrast 5.18:1, AA */
+  --color-accent-dark: #9a3412; /* pomarańcz ciemny, hover przycisków / tekst na białej pigułce: kontrast 7.31:1 */
+  --color-link: #9a3412;        /* kolor linków i haczyków na zmiennym tle strony (jasny/ciemny motyw) */
+  --color-link-hover: #c2410c;
+  --color-dark: #1f2937;        /* grafit, tło stałych sekcji brandowych (header/hero/stopka): kontrast 14.68:1 z bielą */
+  --color-heading: #1f2937;     /* kolor nagłówków na zmiennym tle strony, patrz uwaga w bloku dark mode */
   --color-badge-bg: #fde68a;
   --color-badge-text: #1f2937;  /* kontrast 11.79:1 */
 
@@ -23,6 +27,30 @@
   --space-5: 4rem;
 
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---------- Tryb ciemny ----------
+   Sekcje z tłem stałym brandowym (header, hero, proof-band, cta-band, stopka,
+   trust-bar, mobile-call-bar) używają var(--color-dark) / var(--color-accent) /
+   var(--color-badge-bg) już dziś i mają własny, zawsze poprawny kontrast tekstu
+   niezależnie od motywu — te NIE są tu nadpisywane (to nie jest odwracanie
+   sekcji w środku strony, to stałe bloki marki obecne w obu motywach).
+   Nadpisywane jest płótno strony: tło, tekst, obramowania, karty. Osobno
+   --color-heading: h1/h2/h3 poza hero/cta-band siedzą na tym zmiennym płótnie
+   (nie na stałym --color-dark), więc same muszą się rozjaśnić w trybie ciemnym
+   — inaczej grafit na graficie jest nieczytelny (złapane na zrzucie ekranu). */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #15181c;        /* niepełna czerń, nie #000000 */
+    --color-bg-alt: #1c2027;
+    --color-surface: #1c2027;
+    --color-text: #e6e8eb;      /* niepełna biel, nie #ffffff */
+    --color-text-muted: #a3abb5;
+    --color-border: #2d323a;
+    --color-link: #fb923c;      /* jaśniejszy pomarańcz: kontrast 7,87:1 na #15181c */
+    --color-link-hover: #fdba74;
+    --color-heading: #f3f4f6;   /* kontrast ~16,7:1 na #15181c */
+  }
 }
 
 * { box-sizing: border-box; }
@@ -43,13 +71,13 @@ body {
 
 img { max-width: 100%; display: block; }
 
-a { color: var(--color-accent-dark); }
-a:hover { color: var(--color-accent); }
+a { color: var(--color-link); }
+a:hover { color: var(--color-link-hover); }
 
 h1, h2, h3 {
   line-height: 1.2;
   margin: 0 0 var(--space-2);
-  color: var(--color-dark);
+  color: var(--color-heading);
 }
 
 h1 { font-size: clamp(1.9rem, 4.5vw, 2.9rem); }
@@ -251,7 +279,7 @@ section.alt { background: var(--color-bg-alt); }
   gap: var(--space-3);
 }
 .service-card {
-  background: #fff;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: var(--space-3);
@@ -262,7 +290,7 @@ section.alt { background: var(--color-bg-alt); }
 .service-card .icon {
   width: 44px;
   height: 44px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   background: var(--color-dark);
   color: var(--color-badge-bg);
   display: flex;
@@ -343,7 +371,7 @@ section.alt { background: var(--color-bg-alt); }
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--color-accent-dark);
+  color: var(--color-link);
   font-weight: 800;
 }
 
@@ -377,7 +405,7 @@ section.alt { background: var(--color-bg-alt); }
 }
 .contact-grid > * { min-width: 0; }
 .contact-card {
-  background: #fff;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: var(--space-3);
@@ -506,4 +534,19 @@ footer.site-footer nav a:hover { color: #fff; }
   body { font-size: 16px; }
   .container { padding: 0 var(--space-2); }
   section { padding: var(--space-4) 0; }
+}
+
+/* ---------- prefers-reduced-motion ----------
+   Strona nie ma dziś żadnych transition/animation — jedyny ruch przeglądarki
+   to płynne przewijanie po kliknięciu kotwicy (html { scroll-behavior: smooth }).
+   Blok poniżej je wygasza i jest zabezpieczeniem na przyszłość: każdy kolejny
+   transition/animation dodany do tego pliku automatycznie się tu wyłączy. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
