@@ -1,0 +1,3 @@
+# Podgląd roboczy dla klienta. Nie indeksować.
+User-agent: *
+Disallow: /
