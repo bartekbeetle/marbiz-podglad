@@ -20,11 +20,12 @@ Jeśli port jest zajęty: `lsof -i :3007` i `kill <PID>`, albo zmień `PORT` w `
 ## Struktura
 
 ```
-index.html                  strona główna (hero, 5 usług, dowód zaufania, realizacje, kontakt)
+index.html                  strona główna (hero, 6 usług, dowód zaufania, realizacje, kontakt)
 transport-hds/index.html    podstrona usługowa
 roboty-ziemne/index.html    podstrona usługowa
 wywoz-ziemi/index.html      podstrona usługowa
 transport-materialow/index.html  podstrona usługowa
+rozbiorki/index.html        podstrona usługowa (rozbiórki, pnie, korytowanie, równanie terenu)
 kontakt/index.html          dane kontaktowe + obszar działania
 404.html                    strona błędu (serwowana z kodem 404 przez serve.py)
 css/styles.css               jeden plik CSS, wspólny dla wszystkich podstron
@@ -34,7 +35,17 @@ serve.py                    serwer deweloperski na porcie 3007
 
 ## Co jest zrobione
 
-- 6 podstron + 404, każda z unikalnym `<title>` (≤60 znaków) i `<meta description>`.
+- 7 podstron + 404, każda z unikalnym `<title>` (≤60 znaków) i `<meta description>`.
+- **Tryb ciemny** przez `prefers-color-scheme` (zmienne CSS, jeden motyw na całą stronę —
+  żadna sekcja nie odwraca się w środku). Obsługa `prefers-reduced-motion`.
+- **Zero pauz `—` w treści.** Zdania są przepisane, nie podmienione znakiem: myślnik
+  w prawie każdym zdaniu (94 wystąpienia w pierwszej wersji) to najmocniejszy sygnał
+  „pisane przez maszynę". Jeśli dopisujesz treść — nie wracaj do tego nawyku.
+- Zakres usług spisany z **dosłownego opisu firmy na FB**, nie wymyślony. Źródło:
+  `firmy/niezalezny-przedsiebiorca/klienci/marbiz/fb-posty.md` w vaulcie.
+  **Liczby dozwolone na stronie:** 602 699 269 · 7 opinii · 100% poleceń ·
+  196 obserwujących · 6 usług · Dolna 14, 87-800 Włocławek. **Nic poza tym** —
+  żadnego tonażu, promienia w km, lat doświadczenia ani czasów realizacji.
 - `LocalBusiness` / `Service` JSON-LD na każdej stronie (bez NIP — patrz luki).
 - CTA telefoniczne (`tel:+48602699269`) w headerze, w treści i na sticky call-barze
   mobile; `mailto:` do `marbiz.wloclawek@gmail.com`.
@@ -61,10 +72,14 @@ serve.py                    serwer deweloperski na porcie 3007
    z profilu FB (~615×329 px), nie oryginały. Wystarczają na localhost, ale hero
    będzie rozmyte na ekranach szerszych niż telefon przy realnej publikacji —
    potrzebne oryginalne zdjęcia/filmy od klienta (Paweł ma ich pewnie znacznie więcej).
-3. **Pasek roboczy `#draft-banner`** na górze każdej podstrony (czerwony, tekst
-   „WERSJA ROBOCZA") — sygnalizuje luki 1–2. Do usunięcia jednym cięciem: usuń
+3. **Licznik obserwujących (196) zdryfuje.** To jedyna liczba na stronie, która
+   z czasem po cichu stanie się nieprawdziwa (reszta jest stabilna: telefon, adres,
+   liczba usług, 7 opinii). Przy publikacji: albo zaktualizuj, albo usuń z paska
+   dowodu zaufania i zostaw samo „100% poleceń przy 7 opiniach".
+4. **Pasek roboczy `#draft-banner`** na górze każdej podstrony (czerwony, tekst
+   „WERSJA ROBOCZA"): sygnalizuje luki 1–2. Do usunięcia jednym cięciem: usuń
    `<div id="draft-banner">...</div>` z każdego pliku HTML (jest identyczny wiersz
-   na początku `<body>` w każdym z 7 plików) — CSS (`#draft-banner`) można zostawić,
+   na początku `<body>` w każdym z 8 plików). CSS (`#draft-banner`) można zostawić,
    nieużywana reguła nie szkodzi.
 
 ## Czego świadomie NIE ma
